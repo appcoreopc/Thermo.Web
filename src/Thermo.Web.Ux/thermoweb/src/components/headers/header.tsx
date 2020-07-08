@@ -6,28 +6,33 @@ import {
     Link
 } from "react-router-dom";
 
+import { Nav, Dropdown } from 'rsuite';
 import { SecuredRoute } from '../secureRoute/securedRoute';
 import { LoginComponent } from '../../components/login/logincomponent';
+import { SetupSmtp } from '../smtp/setupsmtp';
+import { SetupUser } from '../users/setupuser';
 
 export const Header = () => (
     <div>
-        header section
-
         <Router>
-            <div>
-                <ul>
-                    <li> <Link to="/">Home</Link> </li>
-                    <li> <Link to="/securedzoned">Login</Link> </li>
-                    <li> <Link to="/about">About</Link> </li>
-                 </ul>
-            </div>
+            <Nav>
+                <Nav.Item> <Link to="/">Home</Link> </Nav.Item>
+                <Nav.Item> <Link to="/setupuser">Users</Link> </Nav.Item>
+                <Nav.Item> <Link to="/smtp">Configure SMTP</Link> </Nav.Item>
+            </Nav>
             <div>
                 <Switch>
                     <Route exact path="/">
                     </Route>
-                    <Route path="/about">
-                        <About />
+                    
+                    <Route path="/setupuser">
+                        <SetupUser />
                     </Route>
+
+                    <Route path="/smtp">
+                        <SetupSmtp />
+                    </Route>
+
                     <SecuredRoute path="/securedzoned">
                         <LoginComponent />
                     </SecuredRoute>
@@ -38,18 +43,3 @@ export const Header = () => (
 );
 
 
-function Home() {
-    return (
-        <div>
-            <h2>Home</h2>
-        </div>
-    );
-}
-
-function About() {
-    return (
-        <div>
-            <h2>About</h2>
-        </div>
-    );
-}

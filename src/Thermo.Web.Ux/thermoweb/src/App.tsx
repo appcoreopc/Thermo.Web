@@ -1,13 +1,15 @@
 import React from 'react';
 import './App.css';
-
-import { Home } from './pages/home/home'; 
+import { Provider } from 'react-redux';
+//import store from './store'
+import { Home } from './pages/home/home';
 
 const App = () => (
-  <div> 
+  
+    <div>
+      <Home></Home>
+    </div>
 
-    <Home></Home>
- </div>
 );
 
 export default App;
