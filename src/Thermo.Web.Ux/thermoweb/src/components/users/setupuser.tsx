@@ -2,7 +2,10 @@ import React from 'react';
 import { Button } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css'
 import { Table, } from 'rsuite';
-const { Column, HeaderCell, Cell, Pagination } = Table;
+import { connect, useDispatch } from "react-redux";
+import { addUser } from "../../redux/reducers/userActions";
+
+const { Column, HeaderCell, Cell } = Table;
 
 var fakeData = [
   {
@@ -22,8 +25,11 @@ var fakeData = [
   },
 ];
 
-export const SetupUser = () => (
-  <div>
+
+const SetupUser = ({ addUser }: any) => {
+  return <div>
+
+    <Button onClick={() => addUser('testuser dispatched')}> Click Me! </Button>
 
     <Table
       height={400}
@@ -49,4 +55,16 @@ export const SetupUser = () => (
 
     </Table>
   </div>
-);
+
+}
+
+const mapStateToProps = (state: any) => ({
+  count: state.count,
+  employee: state.employee
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  addUser: (text:string) => dispatch(addUser(text)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SetupUser);
