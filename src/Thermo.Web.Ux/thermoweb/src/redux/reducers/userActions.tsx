@@ -3,7 +3,8 @@ import { ADD_USER, DELETE_USER, UPDATE_USER, LIST_USER } from './userActionTypes
 export const addUser = (content: string) => ({
   type: ADD_USER,
   payload: {
-    content
+    content : content,
+    count : 0
   }
 });
 

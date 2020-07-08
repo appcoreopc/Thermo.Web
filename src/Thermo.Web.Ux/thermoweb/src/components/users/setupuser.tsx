@@ -25,11 +25,11 @@ var fakeData = [
   },
 ];
 
+export const SetupUser = ({ count, empployee, addUser }: any) => {
 
-const SetupUser = ({ addUser }: any) => {
-  return <div>
-
-    <Button onClick={() => addUser('testuser dispatched')}> Click Me! </Button>
+  return <div>    
+    
+    <Button onClick={() => addUser('dispatched' +  count)}> Load User </Button>
 
     <Table
       height={400}
@@ -58,13 +58,18 @@ const SetupUser = ({ addUser }: any) => {
 
 }
 
-const mapStateToProps = (state: any) => ({
+interface Employee {
+  count : string 
+  employee : string
+}
+
+const mapStateToProps = (state: Employee) => ({
   count: state.count,
   employee: state.employee
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  addUser: (text:string) => dispatch(addUser(text)),
+  addUser: (text: string) => dispatch(addUser(text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SetupUser);

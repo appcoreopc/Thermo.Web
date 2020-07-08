@@ -13,7 +13,7 @@ import { Nav } from 'rsuite';
 import { SecuredRoute } from '../../components/secureRoute/securedRoute';
 import { LoginComponent } from '../../components/login/logincomponent';
 import { SetupSmtp } from '../../components/smtp/setupsmtp';
-//import { SetupUser } from '../../components/users/setupuser';
+import { SetupUser } from '../../components/users/setupuser';
 
 export const Home = () => (
   <div>
@@ -28,10 +28,13 @@ export const Home = () => (
         <Switch>
           <Route exact path="/">
           </Route>
-
          
           <Route path="/smtp">
             <SetupSmtp />
+          </Route>
+
+          <Route path="/setupuser">
+            <SetupUser />
           </Route>
 
           <SecuredRoute path="/securedzoned">
