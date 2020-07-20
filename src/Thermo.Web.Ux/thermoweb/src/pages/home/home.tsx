@@ -25,6 +25,7 @@ export const Home = () => (
         <Nav.Item icon={<Icon icon="envelope" />}> <Link to="/smtp">Configure SMTP</Link> </Nav.Item>
       </Nav>
       <div>
+
         <Switch>
           <Route exact path="/">
           </Route>

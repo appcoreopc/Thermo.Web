@@ -1,17 +1,15 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
+import PropTypes from 'prop-types';
+import { connect, useDispatch } from "react-redux";
+import { debug } from 'console';
 
-export const Header = () => (
+export const Header = ({ count }: any) => (
     <div>
-
-    Default Home Header 
-
+        Default Home Header  <br />
+        {count}
     </div>
 );
+
+
 
 

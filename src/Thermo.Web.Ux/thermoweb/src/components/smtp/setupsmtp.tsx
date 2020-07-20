@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css'
 import { Table, } from 'rsuite';
 
@@ -26,7 +25,7 @@ var fakeData = [
 export const SetupSmtp = () => (
   <div>
 
-  <Table
+    <Table
       height={400}
       data={fakeData}
       onRowClick={data => {

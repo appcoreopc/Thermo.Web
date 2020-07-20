@@ -4,6 +4,7 @@ import 'rsuite/dist/styles/rsuite-default.css'
 import { Table, } from 'rsuite';
 import { connect, useDispatch } from "react-redux";
 import { addUser } from "../../redux/reducers/userActions";
+import { Header } from '../headers/header';
 
 const { Column, HeaderCell, Cell } = Table;
 
@@ -27,9 +28,11 @@ var fakeData = [
 
 export const SetupUser = ({ count, empployee, addUser }: any) => {
 
-  return <div>    
-    
-    <Button onClick={() => addUser('dispatched' +  count)}> Load User </Button>
+  return <div>
+
+    <Header count={count}></Header>
+
+    <Button onClick={() => addUser('dispatched' + count)}> Load User </Button>
 
     <Table
       height={400}
@@ -59,12 +62,21 @@ export const SetupUser = ({ count, empployee, addUser }: any) => {
 }
 
 interface Employee {
-  count : string 
-  employee : string
+  count: string
+  employee: string
 }
 
-const mapStateToProps = (state: Employee) => ({
-  count: state.count,
+function logstate(state: any) {
+
+  if (state.userSetup.payload == undefined)
+    return 0;
+  else
+    return state.userSetup.payload.count;
+
+}
+
+const mapStateToProps = (state: any) => ({
+  count: logstate(state),
   employee: state.employee
 });
 
