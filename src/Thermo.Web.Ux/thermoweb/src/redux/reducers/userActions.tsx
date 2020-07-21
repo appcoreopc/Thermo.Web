@@ -1,7 +1,15 @@
-import { ADD_USER, DELETE_USER, UPDATE_USER, LIST_USER } from './userActionTypes';
+import { ADD_USER, DELETE_USER, UPDATE_USER, LIST_USER, USER_FETCH_REQUESTED } from './userActionTypes';
 
 export const addUser = (content: string) => ({
   type: ADD_USER,
+  payload: {
+    content : content,
+    count : 0
+  }
+});
+
+export const getUsers = (content: string) => ({
+  type: USER_FETCH_REQUESTED,
   payload: {
     content : content,
     count : 0

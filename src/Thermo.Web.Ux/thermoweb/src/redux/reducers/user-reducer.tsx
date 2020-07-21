@@ -1,10 +1,12 @@
 
-import { ADD_USER, DELETE_USER, UPDATE_USER, LIST_USER } from './userActionTypes';
+import { ADD_USER, DELETE_USER, UPDATE_USER, LIST_USER, 
+    USER_FETCH_SUCCEEDED } from './userActionTypes';
 
 export const userReducer = (state: any = {}, action: any) => {
+    debugger;
     switch (action.type) {
         case ADD_USER: {
-            debugger;
+            
             let payload = action.payload;
             return { ...state, payload };
         }
@@ -18,6 +20,9 @@ export const userReducer = (state: any = {}, action: any) => {
         }
         case UPDATE_USER: {
             return { ...state };
+        }
+        case USER_FETCH_SUCCEEDED: {
+            return { ...state, users : action.users };
         }
         default: {
             return state;

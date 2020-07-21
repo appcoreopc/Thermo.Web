@@ -1,13 +1,9 @@
 import React from 'react';
 import './App.css';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
 import StoreReducers from './redux/store'
-import { Home } from './pages/home/home';
 import SetupUser from './components/users/setupuser';
-import { Header } from './components/headers/header';
 import { Footer } from './components/footers/footer';
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,6 +15,10 @@ import { Nav } from 'rsuite';
 import { SecuredRoute } from './components/secureRoute/securedRoute';
 import { LoginComponent } from './components/login/logincomponent';
 import { SetupSmtp } from './components/smtp/setupsmtp';
+import createSagaMiddleware from 'redux-saga'
+
+const sagaMiddleWare = createSagaMiddleware();
+
 
 const App = () => (
 
@@ -53,7 +53,6 @@ const App = () => (
 
       <Footer companyinfo="FatMe" year="2020"></Footer>
     </div>
-
 
   </Provider>
 

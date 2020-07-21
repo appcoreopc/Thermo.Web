@@ -3,7 +3,7 @@ import { Button } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css'
 import { Table, } from 'rsuite';
 import { connect, useDispatch } from "react-redux";
-import { addUser } from "../../redux/reducers/userActions";
+import { addUser, getUsers } from "../../redux/reducers/userActions";
 import { Header } from '../headers/header';
 
 const { Column, HeaderCell, Cell } = Table;
@@ -26,17 +26,19 @@ var fakeData = [
   },
 ];
 
-export const SetupUser = ({ count, empployee, addUser }: any) => {
+export const SetupUser = ({ count, users, addUser, getUsers }: any) => {
 
   return <div>
 
     <Header count={count}></Header>
 
     <Button onClick={() => addUser('dispatched' + count)}> Load User </Button>
+    
+    <Button onClick={() => getUsers('dispatched' + count)}> Get User </Button>
 
     <Table
       height={400}
-      data={fakeData}
+      data={users}
       onRowClick={data => {
         console.log(data);
       }}
@@ -75,13 +77,26 @@ function logstate(state: any) {
 
 }
 
+function handleUser(state :any) 
+{
+  debugger;
+  if (state != undefined && state.userSetup != undefined && state.userSetup.users != null)
+  {
+    return state.userSetup.users;
+  }
+  else 
+    return fakeData;
+
+}
+
 const mapStateToProps = (state: any) => ({
   count: logstate(state),
-  employee: state.employee
+  users: handleUser(state)
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
   addUser: (text: string) => dispatch(addUser(text)),
+  getUsers: (text: string) => dispatch(getUsers(text))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SetupUser);
