@@ -5,26 +5,10 @@ import { Table, } from 'rsuite';
 import { connect, useDispatch } from "react-redux";
 import { addUser, getUsers } from "../../redux/reducers/userActions";
 import { Header } from '../headers/header';
+import { logstate, handleUser } from './userUtil';
+import { NewUserForm } from './newUserForm';
 
 const { Column, HeaderCell, Cell } = Table;
-
-var fakeData = [
-  {
-    id: 1,
-    firstname: 'jeremy',
-    lastName: 'woo'
-  },
-  {
-    id: 2,
-    firstname: 'jeremy2',
-    lastName: 'woo2'
-  },
-  {
-    id: 3,
-    firstname: 'jeremy2',
-    lastName: 'woo2'
-  },
-];
 
 export const SetupUser = ({ count, users, addUser, getUsers }: any) => {
 
@@ -32,9 +16,10 @@ export const SetupUser = ({ count, users, addUser, getUsers }: any) => {
 
     <Header count={count}></Header>
 
-    <Button onClick={() => addUser('dispatched' + count)}> Load User </Button>
-    
-    <Button onClick={() => getUsers('dispatched' + count)}> Get User </Button>
+    <NewUserForm> </NewUserForm>
+    <Button onClick={() => addUser('dispatched' + count)}> Add </Button>
+    <Button onClick={() => getUsers('dispatched' + count)}> Delete </Button>
+    <Button onClick={() => getUsers('dispatched' + count)}> Reload </Button>
 
     <Table
       height={400}
@@ -66,27 +51,6 @@ export const SetupUser = ({ count, users, addUser, getUsers }: any) => {
 interface Employee {
   count: string
   employee: string
-}
-
-function logstate(state: any) {
-
-  if (state.userSetup.payload == undefined)
-    return 0;
-  else
-    return state.userSetup.payload.count;
-
-}
-
-function handleUser(state :any) 
-{
-  debugger;
-  if (state != undefined && state.userSetup != undefined && state.userSetup.users != null)
-  {
-    return state.userSetup.users;
-  }
-  else 
-    return fakeData;
-
 }
 
 const mapStateToProps = (state: any) => ({
