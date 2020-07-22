@@ -15,10 +15,6 @@ import { Nav } from 'rsuite';
 import { SecuredRoute } from './components/secureRoute/securedRoute';
 import { LoginComponent } from './components/login/logincomponent';
 import { SetupSmtp } from './components/smtp/setupsmtp';
-import createSagaMiddleware from 'redux-saga'
-
-const sagaMiddleWare = createSagaMiddleware();
-
 
 const App = () => (
 

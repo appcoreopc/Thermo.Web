@@ -1,7 +1,7 @@
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 
 function fetchUserData(user: any) {
-    
+   
     return [
         {
             id: 1,
@@ -25,13 +25,13 @@ function* fetchUser(action: any) {
     try {
         const users = yield call(fetchUserData, action.payload.userId);
         console.log(users);
-        yield put({ type: "USER_FETCH_SUCCEEDED", users });
+        yield put({ type: "SMTP_FETCH_SUCCEEDED", users });
     } catch (e) {
-        yield put({ type: "USER_FETCH_FAILED", message: e.message });
+        yield put({ type: "SMTP_FETCH_FAILED", message: e.message });
     }
 }
 
-export function* mySaga() {
-    yield takeLatest("USER_FETCH_REQUESTED", fetchUser);
+export function* smtpFetchSaga() {
+    yield takeLatest("SMTP_FETCH_REQUESTED", fetchUser);
 }
 
