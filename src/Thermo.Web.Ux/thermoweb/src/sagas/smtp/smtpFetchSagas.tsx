@@ -1,7 +1,8 @@
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import { SMTP_FETCH_SUCCEEDED, SMTP_FETCH_FAILED, SMTP_FETCH_REQUESTED } from '../../redux/reducers/smtpActionTypes';
 
-function fetchUserData(user: any) {
-   
+function fetchSmtpData(user: any) {
+
     return [
         {
             id: 1,
@@ -21,17 +22,17 @@ function fetchUserData(user: any) {
     ];
 }
 
-function* fetchUser(action: any) {
+function* fetchSmtpConfiguration(action: any) {
     try {
-        const users = yield call(fetchUserData, action.payload.userId);
+        const users = yield call(fetchSmtpData, action.payload.userId);
         console.log(users);
-        yield put({ type: "SMTP_FETCH_SUCCEEDED", users });
+        yield put({ type: SMTP_FETCH_SUCCEEDED, users });
     } catch (e) {
-        yield put({ type: "SMTP_FETCH_FAILED", message: e.message });
+        yield put({ type: SMTP_FETCH_FAILED, message: e.message });
     }
 }
 
 export function* smtpFetchSaga() {
-    yield takeLatest("SMTP_FETCH_REQUESTED", fetchUser);
+    yield takeLatest(SMTP_FETCH_REQUESTED, fetchSmtpConfiguration);
 }
 

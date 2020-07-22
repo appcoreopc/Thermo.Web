@@ -1,5 +1,5 @@
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
-
+import {  USER_FETCH_SUCCEEDED, USER_FETCH_FAILED, USER_FETCH_REQUESTED } from '../../redux/reducers/userActionTypes';
 function fetchUserData(user: any) {
     
     return [
@@ -25,13 +25,13 @@ function* fetchUser(action: any) {
     try {
         const users = yield call(fetchUserData, action.payload.userId);
         console.log(users);
-        yield put({ type: "USER_FETCH_SUCCEEDED", users });
+        yield put({ type: USER_FETCH_SUCCEEDED, users });
     } catch (e) {
-        yield put({ type: "USER_FETCH_FAILED", message: e.message });
+        yield put({ type: USER_FETCH_FAILED, message: e.message });
     }
 }
 
 export function* userFetchSaga() {
-    yield takeLatest("USER_FETCH_REQUESTED", fetchUser);
+    yield takeLatest(USER_FETCH_REQUESTED, fetchUser);
 }
 
