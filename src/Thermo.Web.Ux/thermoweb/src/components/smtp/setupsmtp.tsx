@@ -1,6 +1,7 @@
 import React from 'react';
 import 'rsuite/dist/styles/rsuite-default.css'
 import { Table, } from 'rsuite';
+import { } from './SMTPSettingsForm';
 
 const { Column, HeaderCell, Cell, Pagination } = Table;
 

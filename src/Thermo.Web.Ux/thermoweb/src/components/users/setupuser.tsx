@@ -6,7 +6,7 @@ import { connect, useDispatch } from "react-redux";
 import { addUser, getUsers } from "../../redux/reducers/userActions";
 import { Header } from '../headers/header';
 import { logstate, handleUser } from './userUtil';
-import { NewUserForm } from './newUserForm';
+import { NewUserForm } from './UserForm';
 
 const { Column, HeaderCell, Cell } = Table;
 
