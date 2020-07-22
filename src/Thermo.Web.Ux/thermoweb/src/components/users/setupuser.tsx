@@ -6,7 +6,7 @@ import { connect, useDispatch } from "react-redux";
 import { addUser, getUsers } from "../../redux/reducers/userActions";
 import { Header } from '../headers/header';
 import { logstate, handleUser } from './userUtil';
-import { NewUserForm } from './UserForm';
+import { UserForm } from './userform';
 
 const { Column, HeaderCell, Cell } = Table;
 
@@ -15,9 +15,7 @@ export const SetupUser = ({ count, users, addUser, getUsers }: any) => {
   return <div>
 
     <Header count={count}></Header>
-
-    <NewUserForm> </NewUserForm>
-    <Button onClick={() => addUser('dispatched' + count)}> Add </Button>
+    <UserForm> </UserForm>
     <Button onClick={() => getUsers('dispatched' + count)}> Delete </Button>
     <Button onClick={() => getUsers('dispatched' + count)}> Reload </Button>
 

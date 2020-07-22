@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, Modal, Button } from 'rsuite';
 
-export class NewUserForm extends React.Component<any, any> {
+export class UserForm extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
