@@ -1,7 +1,7 @@
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
-import {  USER_FETCH_SUCCEEDED, USER_FETCH_FAILED, USER_FETCH_REQUESTED } from '../../redux/reducers/userActionTypes';
+import { USER_FETCH_SUCCEEDED, USER_FETCH_FAILED, USER_FETCH_REQUESTED } from '../../redux/reducers/userActionTypes';
+
 function fetchUserData(user: any) {
-    
     return [
         {
             id: 1,
@@ -34,4 +34,3 @@ function* fetchUser(action: any) {
 export function* userFetchSaga() {
     yield takeLatest(USER_FETCH_REQUESTED, fetchUser);
 }
-

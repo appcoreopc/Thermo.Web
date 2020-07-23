@@ -2,14 +2,14 @@ import React from 'react';
 import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, Modal, Button } from 'rsuite';
 
 export class UserForm extends React.Component<any, any> {
+
     constructor(props: any) {
         super(props);
         this.state = {
             formValue: {
                 name: '',
                 email: '',
-                password: '',
-                textarea: ''
+                password: ''
             },
             show: false
         };
@@ -18,14 +18,16 @@ export class UserForm extends React.Component<any, any> {
         this.handleChange = this.handleChange.bind(this);
     }
     close() {
-        this.setState({ show: false });
+        this.setState({ show : false });
+        this.props.addUser(this.state.formValue);
+        //alert(this.state.formValue.name);
     }
     open() {
         this.setState({ show: true });
     }
     handleChange(value: any) {
         this.setState({
-            formValue: value                                                                                
+            formValue: value
         });
     }
     render() {
@@ -36,33 +38,27 @@ export class UserForm extends React.Component<any, any> {
                         <Modal.Title>New User</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form
-                            fluid
-                            onChange={this.handleChange}
-                            formValue={this.state.formValue}
-                        >
+
+                        <Form fluid onChange={this.handleChange}
+                            formValue={this.state.formValue}>
+
                             <FormGroup>
                                 <ControlLabel>Username</ControlLabel>
                                 <FormControl name="name" />
                                 <HelpBlock>Required</HelpBlock>
                             </FormGroup>
+
                             <FormGroup>
                                 <ControlLabel>Email</ControlLabel>
                                 <FormControl name="email" type="email" />
                                 <HelpBlock>Required</HelpBlock>
                             </FormGroup>
+
                             <FormGroup>
                                 <ControlLabel>Password</ControlLabel>
                                 <FormControl name="password" type="password" />
                             </FormGroup>
-                            <FormGroup>
-                                <ControlLabel>Textarea</ControlLabel>
-                                <FormControl
-                                    rows={5}
-                                    name="textarea"
-                                    componentClass="textarea"
-                                />
-                            </FormGroup>
+
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>

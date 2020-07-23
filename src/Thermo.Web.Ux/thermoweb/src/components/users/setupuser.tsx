@@ -9,13 +9,13 @@ import { logstate, handleUser } from './userUtil';
 import { UserForm } from './userform';
 
 const { Column, HeaderCell, Cell } = Table;
-
 export const SetupUser = ({ count, users, addUser, getUsers }: any) => {
 
   return <div>
 
     <Header count={count}></Header>
-    <UserForm> </UserForm>
+    <UserForm addUser={addUser}> </UserForm>
+
     <Button onClick={() => getUsers('dispatched' + count)}> Delete </Button>
     <Button onClick={() => getUsers('dispatched' + count)}> Reload </Button>
 

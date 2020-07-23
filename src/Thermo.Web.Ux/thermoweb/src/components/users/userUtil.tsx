@@ -18,7 +18,7 @@ export let fakeData = [
 ];
 
 export function logstate(state: any) {
-    
+
     if (state.userSetup.payload == undefined)
         return 0;
     else
@@ -27,7 +27,6 @@ export function logstate(state: any) {
 }
 
 export function handleUser(state: any) {
-    debugger;
     if (state != undefined && state.userSetup != undefined && state.userSetup.users != null) {
         return state.userSetup.users;
     }
