@@ -1,22 +1,20 @@
-import { USER_ADD_REQUESTED, LIST_USER, USER_FETCH_REQUESTED } from './userActionTypes';
+import { USER_ADD_REQUESTED, 
+  USER_DELETE_REQUESTED, 
+  USER_FETCH_REQUESTED } from './userActionTypes';
 
-export const addUser = (content: string) => ({
+export const addUser = (userAddJson: string) => ({
   type: USER_ADD_REQUESTED,
-  newuser : content
+  newuser: userAddJson
 });
 
-export const getUsers = (content: string) => ({
+export const getUsers = (filter: string) => ({
   type: USER_FETCH_REQUESTED,
-  payload: {
-    content: content,
-    count: 0
+  getUsers: {
+    filter
   }
 });
 
-export const listUser = (content: string) => ({
-  type: LIST_USER,
-  payload: {
-    content,
-    count: 3
-  }
+export const deleteUsers = (content: string) => ({
+  type: USER_DELETE_REQUESTED,
+  deleteTargetUsers: content
 });

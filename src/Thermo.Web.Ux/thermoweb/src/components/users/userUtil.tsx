@@ -23,14 +23,29 @@ export function logstate(state: any) {
         return 0;
     else
         return state.userSetup.payload.count;
-
 }
 
-export function handleUser(state: any) {
+export function handleUsersRecord(state: any) {
     if (state != undefined && state.userSetup != undefined && state.userSetup.users != null) {
         return state.userSetup.users;
     }
     else
         return fakeData;
+}
 
+export function handleUserDeleteState(state: any) {
+    debugger;
+    if (state != undefined && state.userSetup != undefined && state.userSetup.userDeleteStatus != null) {
+        console.log('handleUserDeleteState' + state.userSetup.userDeleteStatus);
+        return state.userSetup.userDeleteStatus;
+    }
+    else
+        return false;
+}
+
+export function handleUserAddState(state: any) {
+    if (state != undefined && state.userSetup != undefined && state.userSetup.userAddStatus != undefined)
+        return state.userSetup.userAddStatus;
+    else
+        return false;
 }
