@@ -3,9 +3,11 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 import { USER_DELETE_SUCCEEDED, USER_DELETE_FAILED, USER_DELETE_REQUESTED } from '../../redux/reducers/userActionTypes';
 import { createExectionStatusResponse } from '../../components/users/userUtil';
+import axios, { AxiosStatic } from 'axios';
+import { AppConfiguration } from '../../config/config';
 
-function deleteUserExecute(user: any) {
-    return true;
+async function deleteUserExecute(users: any): Promise<any> {
+    return await axios.delete(AppConfiguration.host + AppConfiguration.userUrl, users);
 }
 
 function* deleteUserData(action: any) {

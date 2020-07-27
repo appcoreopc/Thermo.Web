@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Checkbox } from 'rsuite';
+import { Button } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css'
 import { Table, } from 'rsuite';
 import { connect, useDispatch } from "react-redux";
@@ -15,7 +15,7 @@ export const SetupUser = (props: any) => {
   let indeterminate = false;
 
   useEffect(() => {
-     props.getUsers('initial load');
+    props.getUsers('initial load');
   }, []);
 
   return <div>

@@ -1,15 +1,17 @@
 import { call, put, takeLatest, takeEvery } from 'redux-saga/effects'
 import { USER_ADD_SUCCEEDED, USER_ADD_FAILED, USER_ADD_REQUESTED } from '../../redux/reducers/userActionTypes';
 import { createExectionStatusResponse } from '../../components/users/userUtil';
+import axios, { AxiosStatic } from 'axios';
+import { AppConfiguration } from '../../config/config';
 
-function fetchUserData(user: any) {
-    return true;
+async function createNewUser(userInfo: any): Promise<any> {
+    return await axios.post(AppConfiguration.host + AppConfiguration.userUrl, userInfo);
 }
 
 function* addUserData(action: any) {
     debugger;
     try {
-        const userAddStatus = yield call(fetchUserData, action.getUsers.filter);
+        const userAddStatus = yield call(createNewUser, action.getUsers.filter);
         console.log(userAddStatus);
         yield put({ type: USER_ADD_SUCCEEDED, userAddStatus });
     } catch (e) {

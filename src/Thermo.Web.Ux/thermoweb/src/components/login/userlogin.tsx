@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, ButtonToolbar, Button } from 'rsuite';
+import axios from 'axios';
+import { AppConfiguration } from '../../config/config';
 
 export class UserLogin extends React.Component<any, any> {
 
@@ -12,23 +14,22 @@ export class UserLogin extends React.Component<any, any> {
             },
             show: false
         };
-        this.close = this.close.bind(this);
-        this.open = this.open.bind(this);
+
         this.handleChange = this.handleChange.bind(this);
     }
-    close() {
-        this.setState({ show: false });
-        this.props.addUser(this.state.formValue);
+
+    async handleLogin() {
+        var result = await axios.post(
+            AppConfiguration.host + AppConfiguration.loginUrl, this.state.formValue.name);
 
     }
-    open() {
-        this.setState({ show: true });
-    }
+
     handleChange(value: any) {
         this.setState({
             formValue: value
         });
     }
+
     render() {
         return (
             <div>
@@ -49,8 +50,7 @@ export class UserLogin extends React.Component<any, any> {
 
                     <FormGroup>
                         <ButtonToolbar>
-                            <Button appearance="primary">Submit</Button>
-                            <Button appearance="default">Cancel</Button>
+                            <Button onClick={() => { this.handleLogin() }} appearance="primary">Login</Button>
                         </ButtonToolbar>
                     </FormGroup>Î
 

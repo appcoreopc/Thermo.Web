@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, Modal, Button } from 'rsuite';
+import { AppConfiguration } from '../../config/config';
 
 export class UserForm extends React.Component<any, any> {
 
@@ -18,9 +19,8 @@ export class UserForm extends React.Component<any, any> {
         this.handleChange = this.handleChange.bind(this);
     }
     close() {
-        this.setState({ show : false });
+        this.setState({ show: false });
         this.props.addUser(this.state.formValue);
-        //alert(this.state.formValue.name);
     }
     open() {
         this.setState({ show: true });
@@ -58,8 +58,8 @@ export class UserForm extends React.Component<any, any> {
                                 <ControlLabel>Password</ControlLabel>
                                 <FormControl name="password" type="password" />
                             </FormGroup>
-
                         </Form>
+
                     </Modal.Body>
                     <Modal.Footer>
                         <Button onClick={this.close} appearance="primary">

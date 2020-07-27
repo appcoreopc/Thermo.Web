@@ -1,6 +1,6 @@
 
 import {
-    USER_ADD_REQUESTED, USER_ADD_SUCCEEDED,
+    USER_ADD_REQUESTED, USER_ADD_SUCCEEDED, USER_DELETE_FAILED, USER_FETCH_FAILED,
     USER_FETCH_SUCCEEDED, USER_FETCH_REQUESTED, USER_DELETE_REQUESTED, USER_ADD_FAILED, USER_DELETE_SUCCEEDED
 } from './userActionTypes';
 
@@ -27,7 +27,13 @@ export const userReducer = (state: any = {}, action: any) => {
             return { ...state, userAddStatus };
         }
         case USER_ADD_FAILED: {
-            return { ...state };
+            return { ...state, result: action.result };
+        }
+        case USER_DELETE_FAILED: {
+            return { ...state, result: action.result };
+        }
+        case USER_FETCH_FAILED: {
+            return { ...state, result: action.result };
         }
         case USER_FETCH_SUCCEEDED: {
             return { ...state, users: action.users };
