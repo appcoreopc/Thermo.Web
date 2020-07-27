@@ -9,6 +9,7 @@ import { Icon, Nav } from 'rsuite';
 import { SecuredRoute } from './components/secureRoute/securedRoute';
 import { LoginComponent } from './components/login/logincomponent';
 import { SetupSmtp } from './components/smtp/setupsmtp';
+import { UserLogin } from './components/login/userlogin';
 
 const App = () => (
 
@@ -17,10 +18,12 @@ const App = () => (
     <div>
       <Router>
         <Nav>
-          <Nav.Item icon={<Icon icon="home" />}> <Link to="/">Home</Link> </Nav.Item>
-          <Nav.Item icon={<Icon icon="user" />}> <Link to="/setupuser">Users</Link> </Nav.Item>
-          <Nav.Item icon={<Icon icon="envelope" />}> <Link to="/smtp">Configure SMTP</Link> </Nav.Item>
+          <Link to="/">Home</Link>
+          <Link to="/setupuser">Users</Link>
+          <Link to="/smtp">Configure SMTP</Link>
+          <Link to="/login">Login</Link>
         </Nav>
+
         <div>
 
           <Switch>
@@ -34,10 +37,15 @@ const App = () => (
               <SetupUser />
             </Route>
 
+            <Route path="/login">
+              <UserLogin />
+            </Route>
+
             <SecuredRoute path="/securedzoned">
-              <LoginComponent />
+              <UserLogin />
             </SecuredRoute>
           </Switch>
+
         </div>
       </Router>
 

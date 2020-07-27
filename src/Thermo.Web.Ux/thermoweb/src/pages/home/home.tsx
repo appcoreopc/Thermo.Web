@@ -14,6 +14,7 @@ import { SecuredRoute } from '../../components/secureRoute/securedRoute';
 import { LoginComponent } from '../../components/login/logincomponent';
 import { SetupSmtp } from '../../components/smtp/setupsmtp';
 import { SetupUser } from '../../components/users/setupuser';
+import { UserLogin } from '../../components/login/userlogin';
 
 export const Home = () => (
   <div>
@@ -23,13 +24,15 @@ export const Home = () => (
         <Nav.Item icon={<Icon icon="home" />}> <Link to="/">Home</Link> </Nav.Item>
         <Nav.Item icon={<Icon icon="user" />}> <Link to="/setupuser">Users</Link> </Nav.Item>
         <Nav.Item icon={<Icon icon="envelope" />}> <Link to="/smtp">Configure SMTP</Link> </Nav.Item>
+
+
       </Nav>
+
       <div>
 
+
         <Switch>
-          <Route exact path="/">
-          </Route>
-         
+
           <Route path="/smtp">
             <SetupSmtp />
           </Route>
@@ -37,10 +40,15 @@ export const Home = () => (
           <Route path="/setupuser">
             <SetupUser />
           </Route>
-
-          <SecuredRoute path="/securedzoned">
+          {/* 
+          <Route path="/">
             <LoginComponent />
-          </SecuredRoute>
+          </Route>
+
+          <Route path="/login">
+            <LoginComponent />
+          </Route> */}
+
         </Switch>
       </div>
     </Router>

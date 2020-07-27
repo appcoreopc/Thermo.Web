@@ -1,37 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Checkbox } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css'
 import { Table, } from 'rsuite';
 import { connect, useDispatch } from "react-redux";
 import { addUser, getUsers, deleteUsers } from "../../redux/reducers/userActions";
 import { Header } from '../headers/header';
-import { logstate, handleUsersRecord, handleUserDeleteState, handleUserAddState } from './userUtil';
+import { logstate, handleUsersRecord, handleExecutionResult } from './userUtil';
 import { UserForm } from './userform';
 
-
 const { Column, HeaderCell, Cell } = Table;
-export const SetupUser = ({ count, users, props, state,
-  addUser, getUsers, deleteUsers, userDeleteStatus, userAddStatus }: any) => {
+export const SetupUser = (props: any) => {
 
   let checked = false;
   let indeterminate = false;
-  const [data, setdata] = useState(0);
-  const [checkedKeys, setcheckedKeys] = useState(0);
+
+  useEffect(() => {
+     props.getUsers('initial load');
+  }, []);
 
   return <div>
 
     <Header></Header>
-    <UserForm addUser={addUser}> </UserForm>
-    <Button onClick={() => deleteUsers('12,34,35,67')}> Delete </Button>
-    <Button onClick={() => getUsers('dispatched' + count)}> Reload </Button>
+    <UserForm addUser={props.addUser}> </UserForm>
+    <Button onClick={() => props.deleteUsers('12,34,35,67')}> Delete </Button>
+    <Button onClick={() => props.getUsers('dispatched' + props.count)}> Reload </Button>
 
-
-    <div> {userDeleteStatus ? '' : 'error deleting user'}
-      {userAddStatus ? '' : 'error adding user'} </div>
+    <div> {props.status.message} </div>
 
     <Table
       height={400}
-      data={users}
+      data={props.users}
       onRowClick={data => {
         console.log(data);
       }}>
@@ -62,12 +60,12 @@ export const SetupUser = ({ count, users, props, state,
 
       <Column width={130} fixed>
         <HeaderCell>First Name</HeaderCell>
-        <Cell dataKey="firstName" />
+        <Cell dataKey="firstname" />
       </Column>
 
       <Column width={130}>
         <HeaderCell>Last Name</HeaderCell>
-        <Cell dataKey="lastName" />
+        <Cell dataKey="lastname" />
       </Column>
 
     </Table>
@@ -85,10 +83,8 @@ function handleState(state: any) {
 }
 
 const mapStateToProps = (state: any) => ({
-  count: logstate(state),
   users: handleUsersRecord(state),
-  userDeleteStatus: handleUserDeleteState(state),
-  userAddStatus: handleUserAddState(state)
+  status: handleExecutionResult(state)
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

@@ -2,6 +2,7 @@
 
 import { call, put, takeEvery } from 'redux-saga/effects'
 import { USER_DELETE_SUCCEEDED, USER_DELETE_FAILED, USER_DELETE_REQUESTED } from '../../redux/reducers/userActionTypes';
+import { createExectionStatusResponse } from '../../components/users/userUtil';
 
 function deleteUserExecute(user: any) {
     return true;
@@ -14,7 +15,9 @@ function* deleteUserData(action: any) {
         console.log("user delete operation.");
         yield put({ type: USER_DELETE_SUCCEEDED, userDeleteStatus });
     } catch (e) {
-        yield put({ type: USER_DELETE_FAILED, message: e.message });
+        var execResult = createExectionStatusResponse(-1, e.message, null);
+        console.log(execResult);
+        yield put({ type: USER_DELETE_FAILED, result: execResult });
     }
 }
 

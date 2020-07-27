@@ -3,17 +3,17 @@ export let fakeData = [
     {
         id: 1,
         firstname: 'jeremy',
-        lastName: 'woo'
+        lastname: 'woo'
     },
     {
         id: 2,
         firstname: 'jeremy2',
-        lastName: 'woo2'
+        lastname: 'woo2'
     },
     {
         id: 3,
         firstname: 'jeremy2',
-        lastName: 'woo2'
+        lastname: 'woo2'
     },
 ];
 
@@ -33,19 +33,20 @@ export function handleUsersRecord(state: any) {
         return fakeData;
 }
 
-export function handleUserDeleteState(state: any) {
+export function handleExecutionResult(state: any) {
     debugger;
-    if (state != undefined && state.userSetup != undefined && state.userSetup.userDeleteStatus != null) {
-        console.log('handleUserDeleteState' + state.userSetup.userDeleteStatus);
-        return state.userSetup.userDeleteStatus;
+    if (state != undefined && state.userSetup != undefined && state.userSetup.result != undefined) {
+        console.log(state.userSetup.result);
+        return state.userSetup.result;
     }
     else
         return false;
 }
 
-export function handleUserAddState(state: any) {
-    if (state != undefined && state.userSetup != undefined && state.userSetup.userAddStatus != undefined)
-        return state.userSetup.userAddStatus;
-    else
-        return false;
+export function createExectionStatusResponse(status: number, message: string, data: any): {} {
+    return {
+        status,
+        message,
+        data
+    };
 }
