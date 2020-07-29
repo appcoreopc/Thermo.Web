@@ -21,11 +21,9 @@ export const SetupUser = (props: any) => {
   return <div>
 
     <Header></Header>
-    <UserForm addUser={props.addUser}> </UserForm>
-    <Button onClick={() => props.deleteUsers('12,34,35,67')}> Delete </Button>
-    <Button onClick={() => props.getUsers('dispatched' + props.count)}> Reload </Button>
-
-    <div> {props.status.message} </div>
+      <UserForm addUser={props.addUser}> </UserForm>
+    
+   <div> {props.status.message} </div>
 
     <Table
       height={400}

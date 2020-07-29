@@ -3,7 +3,6 @@ import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, ButtonToolbar, B
 import axios from 'axios';
 import { AppConfiguration } from '../../config/config';
 import { fakeAuth } from './fakeAuth';
-
 import { useHistory } from "react-router"
 
 export class UserLogin extends React.Component<any, any> {
