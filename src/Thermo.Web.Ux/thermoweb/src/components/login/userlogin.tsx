@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, ButtonToolbar, Button } from 'rsuite';
 import axios from 'axios';
 import { AppConfiguration } from '../../config/config';
+import { fakeAuth } from './fakeAuth';
+
+import { useHistory } from "react-router"
 
 export class UserLogin extends React.Component<any, any> {
 
@@ -19,8 +22,15 @@ export class UserLogin extends React.Component<any, any> {
     }
 
     async handleLogin() {
-        var result = await axios.post(
-            AppConfiguration.host + AppConfiguration.loginUrl, this.state.formValue.name);
+
+        fakeAuth.authenticate();
+
+        console.log(fakeAuth);
+       
+        
+        //  var result = await axios.post(
+        //      AppConfiguration.host + AppConfiguration.loginUrl, 
+        //      this.state.formValue.name);
 
     }
 
@@ -28,12 +38,11 @@ export class UserLogin extends React.Component<any, any> {
         this.setState({
             formValue: value
         });
-    }
+    };
 
     render() {
         return (
             <div>
-
                 <Form fluid onChange={this.handleChange}
                     formValue={this.state.formValue}>
 

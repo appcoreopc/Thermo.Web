@@ -42,27 +42,27 @@ export class SMTPSettingsForm extends React.Component<any, any> {
                             formValue={this.state.formValue}
                         >
                             <FormGroup>
-                                <ControlLabel>Username</ControlLabel>
-                                <FormControl name="name" />
+                                <ControlLabel>Host</ControlLabel>
+                                <FormControl name="host" />
                                 <HelpBlock>Required</HelpBlock>
                             </FormGroup>
                             <FormGroup>
-                                <ControlLabel>Email</ControlLabel>
-                                <FormControl name="email" type="email" />
+                                <ControlLabel>Port</ControlLabel>
+                                <FormControl name="port"/>
                                 <HelpBlock>Required</HelpBlock>
                             </FormGroup>
+                            <FormGroup>
+                                <ControlLabel>Username</ControlLabel>
+                                <FormControl name="username"/>
+                                <HelpBlock>Required</HelpBlock>
+                            </FormGroup>
+
                             <FormGroup>
                                 <ControlLabel>Password</ControlLabel>
-                                <FormControl name="password" type="password" />
+                                <FormControl name="password"/>
+                                <HelpBlock>Required</HelpBlock>
                             </FormGroup>
-                            <FormGroup>
-                                <ControlLabel>Textarea</ControlLabel>
-                                <FormControl
-                                    rows={5}
-                                    name="textarea"
-                                    componentClass="textarea"
-                                />
-                            </FormGroup>
+                           
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>
