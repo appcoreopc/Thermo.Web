@@ -6,9 +6,11 @@ import { Nav } from 'rsuite';
 import { SecuredRoute } from '../../components/secureRoute/securedRoute';
 import { SetupSmtp } from '../../components/smtp/setupsmtp';
 import { UserLogin } from '../../components/login/userlogin';
-import { Container, Header, Navbar, Icon, Content, Footer } from 'rsuite';
+import { Container, Header, Navbar, Icon, Content } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import { fakeAuth } from '../../components/login/fakeAuth';
+import { Footer } from '../../components/footers/footer';
+
 
 export const Home = () => (
   <div className="show-fake-browser navbar-page">
@@ -30,6 +32,11 @@ export const Home = () => (
 
           <Switch>
             <Route exact path="/">
+
+
+                
+
+              
             </Route>
             <Route path="/smtp">
               <SetupSmtp />
@@ -52,7 +59,9 @@ export const Home = () => (
           </Switch>
 
         </Content>
-        <Footer>Footer</Footer>
+
+        <Footer companyinfo='fatme' 
+         year='2020'></Footer>
       </Container>
     </Router>
 
