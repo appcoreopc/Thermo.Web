@@ -29,7 +29,8 @@ function AuthButton() {
   );
 }
 
-export function SecuredRoute({ children, path }: { children:any, path:string }) {
+
+export const SecuredRoute = ({ children, path }: { children:any, path:string }) => {
     return (
       <Route
         path={path}

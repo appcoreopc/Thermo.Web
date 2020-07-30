@@ -10,6 +10,8 @@ import { Container, Header, Navbar, Icon, Content } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import { fakeAuth } from '../../components/login/fakeAuth';
 import { Footer } from '../../components/footers/footer';
+import { CompanyHome } from '../../components/companyinfo/companyhome';
+import { ConfigureComponent } from '../../components/secureRoute/configurecomponent';
 
 
 export const Home = () => (
@@ -29,14 +31,10 @@ export const Home = () => (
           </Navbar>
         </Header>
         <Content>
-
+         
           <Switch>
             <Route exact path="/">
-
-
-                
-
-              
+              <CompanyHome></CompanyHome>
             </Route>
             <Route path="/smtp">
               <SetupSmtp />
@@ -51,16 +49,15 @@ export const Home = () => (
             </Route>
 
             <SecuredRoute path="/protected">
-            
-              <Link to="/setupuser">Users</Link>
-              <Link to="/smtp">Configure SMTP</Link>
-          
+
+              <ConfigureComponent></ConfigureComponent>
+              
             </SecuredRoute>
           </Switch>
 
         </Content>
 
-        <Footer companyinfo='fatme' 
+        <Footer companyinfo='Fatme' 
          year='2020'></Footer>
       </Container>
     </Router>

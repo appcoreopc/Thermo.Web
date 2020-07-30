@@ -1,14 +1,16 @@
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect, useDispatch } from "react-redux";
+import './companyinfo.css';
+
 export const CompanyHome = () => (
-    
     <div>
-                
-    <section className='l-section l-section--home-hero u-bg-white' data-gtm-vis-recent-on-screen-10972521_178='2180' data-gtm-vis-first-on-screen-10972521_178='2180' data-gtm-vis-total-visible-time-10972521_178='100' data-gtm-vis-has-fired-10972521_178='1' style='--component-position:80px;'>
 
+        <div className='center'>
 
-  </section>
+            <img src="https://www.android.com/intl/en_nz/static/2016/img/hero-carousel/photo-phone.png"></img>
 
-
+        </div>
     </div>
-     
-
 );

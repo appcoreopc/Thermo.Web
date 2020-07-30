@@ -24,9 +24,6 @@ export class UserLogin extends React.Component<any, any> {
 
         fakeAuth.authenticate();
 
-        console.log(fakeAuth);
-       
-        
         //  var result = await axios.post(
         //      AppConfiguration.host + AppConfiguration.loginUrl, 
         //      this.state.formValue.name);
@@ -42,27 +39,30 @@ export class UserLogin extends React.Component<any, any> {
     render() {
         return (
             <div>
-                <Form fluid onChange={this.handleChange}
-                    formValue={this.state.formValue}>
 
-                    <FormGroup>
-                        <ControlLabel>Username</ControlLabel>
-                        <FormControl name="name" />
-                        <HelpBlock>Required</HelpBlock>
-                    </FormGroup>
+                <div className="center loginlayout">
 
-                    <FormGroup>
-                        <ControlLabel>Password</ControlLabel>
-                        <FormControl name="password" type="password" />
-                    </FormGroup>
+                    <Form fluid onChange={this.handleChange}
+                        formValue={this.state.formValue}>
 
-                    <FormGroup>
-                        <ButtonToolbar>
-                            <Button onClick={() => { this.handleLogin() }} appearance="primary">Login</Button>
-                        </ButtonToolbar>
-                    </FormGroup>Î
+                        <FormGroup>
+                            <ControlLabel>Username</ControlLabel>
+                            <FormControl name="name" />
+                            <HelpBlock>Required</HelpBlock>
+                        </FormGroup>
 
-                </Form>
+                        <FormGroup>
+                            <ControlLabel>Password</ControlLabel>
+                            <FormControl name="password" type="password" />
+                        </FormGroup>
+
+                        <FormGroup>
+                            <ButtonToolbar>
+                                <Button onClick={() => { this.handleLogin() }} appearance="primary">Login</Button>
+                            </ButtonToolbar></FormGroup>
+                    </Form>
+
+                </div>
 
             </div>
         );
