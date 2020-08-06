@@ -4,7 +4,6 @@ import 'rsuite/dist/styles/rsuite-default.css'
 import { Table, } from 'rsuite';
 import { connect, useDispatch } from "react-redux";
 import { addUser, getUsers, deleteUsers } from "../../redux/reducers/userActions";
-import { Header } from '../headers/header';
 import { logstate, handleUsersRecord, handleExecutionResult } from './userUtil';
 import { UserForm } from './userform';
 
@@ -19,8 +18,6 @@ export const SetupUser = (props: any) => {
   }, []);
 
   return <div>
-
-    <Header></Header>
       <UserForm addUser={props.addUser}> </UserForm>
     
    <div> {props.status.message} </div>

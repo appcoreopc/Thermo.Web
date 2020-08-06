@@ -36,8 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-.rs-nav-item > .rs-nav-item-content a {
-  color: #fff;
-  text-decoration: none;
-}
